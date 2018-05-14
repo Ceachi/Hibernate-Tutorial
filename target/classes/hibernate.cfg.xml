@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+
+<!--  Ce punem pe sesiune : -->
+    <session-factory>
+    <!--  punem driverul mysql, linkul catre baza de date precum si credentialele -->
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost/dbhybernate</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password"></property>
+         <!--  Dimensiunea connection pool avem 1 singur thread in cazul asta pt aplicatie -->
+        <property name="connection.pool_size">1</property>       
+         <!--  Dialectul face translatia catre dialectul SQL -->
+         <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+         
+         <!-- asta o sa caute si o sa iti suprascrie, daca tabela nu exista, o creaza, daca nu tot o pune peste -->
+       <!--   <property name="hbm2ddl.auto">create</property> -->
+        <property name="hbm2ddl.auto">create</property>
+        <!--  daca avea create, ar fii creat toate tabelele la rulare -->
+        
+        <!-- daca vrei sa iti afiseze in consola cum face sql-ul pentru obiecte adaugi: -->
+        <property name="show_sql">true</property>
+        
+        <!--         <property name="hibernate.cache.use_second_level_cache">true</property>
+		<property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
+		<property name="hibernate.cache.use_query_cache">true </property>
+		-->
+    </session-factory>
+    
+</hibernate-configuration>
